@@ -73,3 +73,39 @@ h1 { line-height: 1.2; }
 }
 ::selection { background: #dca77e; color: #2e1d14; }
 :focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 4px; }
+
+/* Pan and zoom the knowledge graph without disrupting its node selection. */
+.ani-interactive-graph { cursor: grab; touch-action: none; user-select: none; }
+.ani-interactive-graph.ani-graph-dragging,
+.ani-interactive-graph.ani-graph-dragging .lp-graph-node { cursor: grabbing !important; }
+.ani-interactive-graph:focus-visible { outline-offset: -4px; }
+.ani-graph-controls {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  padding: .3rem;
+  border: 1px solid var(--lp-border);
+  border-radius: var(--lp-radius-md);
+  background: var(--lp-bg);
+  color: var(--lp-text);
+  box-shadow: 0 4px 16px #00000012;
+}
+.ani-graph-controls button {
+  min-height: 38px;
+  min-width: 38px;
+  padding: .35rem .6rem;
+  border: 0;
+  border-radius: var(--lp-radius-sm);
+  background: transparent;
+  color: var(--lp-text);
+  font: inherit;
+  font-size: .875rem;
+  cursor: pointer;
+}
+.ani-graph-controls button:hover:not(:disabled) { background: var(--lp-code-bg); color: var(--lp-accent); }
+.ani-graph-controls button:disabled { opacity: .35; cursor: default; }
+.ani-graph-zoom { min-width: 4ch; text-align: center; font-size: .8rem; color: var(--lp-text-muted); }
