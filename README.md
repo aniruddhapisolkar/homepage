@@ -14,7 +14,6 @@ Open any `.md` file → click the pencil icon → make your changes → **Commit
 | `about.md` | About |
 | `blog/` | Blog posts |
 | `portfolio/` | Projects |
-| `notes/` | Notes |
 | `style.css` | Colors and typography |
 | `leafpress.json` | Site settings |
 
