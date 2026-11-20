@@ -70,12 +70,11 @@ Navigation currently uses automatic mode. Switch to `navigation.mode: "explicit"
 
 ## Preview locally
 
-Install Leafpress using the [official installation guide](https://leafpress.in/guide/installation/) (use version 1.1.2 for parity with CI). With Python 3 available:
+Install Leafpress using the [official installation guide](https://leafpress.in/guide/installation/) (use version 1.1.2 for parity with CI). Then:
 
 ```sh
 git clone https://github.com/aniruddhapisolkar/homepage.git
 cd homepage
-python3 scripts/fetch-fonts.py
 leafpress serve
 ```
 
@@ -83,15 +82,9 @@ Open http://localhost:3000. For a production build run `leafpress build --strict
 
 ## Typography
 
-The design is prepared for [Obel Mono](https://typographic.systems/obel-mono) 1.004. The publisher rejected the automated CI download, so until the font assets are supplied, the site uses the bundled JetBrains Mono fallback. 
+[Obel Mono](https://typographic.systems/obel-mono) 1.004 is bundled in `static/fonts/obel-mono/` as its original unmasked Roman and Italic variable WOFF2 fonts, with the SIL Open Font License and author notice. `leafpress.json` registers the files for headings, body text, and code; `style.css` defines the warm light and dark palettes.
 
-To activate Obel Mono, download the official archive and put the unmasked Roman and Italic **variable WOFF2** files and its `OFL.txt` at:
-
-- `static/fonts/obel-mono/ObelMono-Roman.woff2`
-- `static/fonts/obel-mono/ObelMono-Italic.woff2`
-- `static/fonts/obel-mono/OFL.txt`
-
-Then commit them. The build pipeline detects these files and registers Obel Mono as the heading, body, and code font; visitors receive them directly from the site. No external font service or font-download step is needed. The same preparation script works before local preview.
+Fonts are self-hosted, so neither builds nor visitors need to contact an external font service.
 
 ## First-time publishing setup
 

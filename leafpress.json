@@ -8,9 +8,9 @@
   },
   "theme": {
     "preset": "quiet",
-    "fontHeading": "JetBrains Mono",
-    "fontBody": "JetBrains Mono",
-    "fontMono": "JetBrains Mono",
+    "fontHeading": "Obel Mono",
+    "fontBody": "Obel Mono",
+    "fontMono": "Obel Mono",
     "accent": "#8b4a2d",
     "background": {
       "light": "#f8f0e3",
@@ -18,7 +18,23 @@
     },
     "navStyle": "sticky",
     "navActiveStyle": "underlined",
-    "listColumns": 1
+    "listColumns": 1,
+    "fonts": [
+      {
+        "family": "Obel Mono",
+        "file": "static/fonts/obel-mono/ObelMono-Roman.woff2",
+        "weight": "100 900",
+        "style": "normal",
+        "display": "swap"
+      },
+      {
+        "family": "Obel Mono",
+        "file": "static/fonts/obel-mono/ObelMono-Italic.woff2",
+        "weight": "100 900",
+        "style": "italic",
+        "display": "swap"
+      }
+    ]
   },
   "features": {
     "graph": true,
