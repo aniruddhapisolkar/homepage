@@ -1,0 +1,65 @@
+name: Build and deploy Leafpress
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: "1.27.3"
+          cache: false
+
+      - name: Install Leafpress
+        run: go install github.com/shivamx96/leafpress/cli/cmd/leafpress@v1.1.2
+
+      - name: Prepare local fonts (when supplied)
+        run: python3 scripts/fetch-fonts.py
+
+      - name: Build and validate site
+        run: |
+          leafpress build --strict
+          test -f _site/index.html
+          test -f _site/blog/index.html
+          test -f _site/portfolio/index.html
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

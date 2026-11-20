@@ -1,0 +1,46 @@
+{
+  "site": {
+    "title": "Ani",
+    "author": "Ani",
+    "baseURL": "https://aniruddhapisolkar.github.io/homepage",
+    "description": "A personal archive of writing, work, and ideas.",
+    "footer": "An evolving collection of work and ideas."
+  },
+  "theme": {
+    "preset": "quiet",
+    "fontHeading": "JetBrains Mono",
+    "fontBody": "JetBrains Mono",
+    "fontMono": "JetBrains Mono",
+    "accent": "#8b4a2d",
+    "background": {
+      "light": "#f8f0e3",
+      "dark": "#241b16"
+    },
+    "navStyle": "sticky",
+    "navActiveStyle": "underlined",
+    "listColumns": 1
+  },
+  "features": {
+    "graph": true,
+    "toc": true,
+    "search": true,
+    "wikilinks": true,
+    "backlinks": true,
+    "rss": true,
+    "sharing": false
+  },
+  "navigation": {
+    "mode": "automatic",
+    "includeTags": false
+  },
+  "build": {
+    "outputDir": "_site",
+    "ignore": [
+      "README.md",
+      "drafts",
+      "*.draft.md",
+      "scripts",
+      ".github"
+    ]
+  }
+}
