@@ -1,7 +1,6 @@
 ---
 title: "Hello, I'm Aniruddha."
 description: "My personal corner of the internet — a home for writing, projects, and ideas."
-toc: false
 ---
 
 This is my little corner of the internet; a space for the things I'm learning, the things I'm building, and the questions I'm still figuring out.
@@ -14,5 +13,5 @@ This is my little corner of the internet; a space for the things I'm learning, t
 
 ---
 
-[Contact me](mailto:aniruddha.pisolkar@.com)
+[Contact me](mailto:aniruddha.pisolkar@gmail.com)
 
