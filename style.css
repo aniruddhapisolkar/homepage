@@ -1,0 +1,75 @@
+/* Oat milk, espresso & cinnamon. Leafpress provides the responsive layout. */
+:root {
+  --lp-font-heading: "Obel Mono", monospace;
+  --lp-font-body: "Obel Mono", monospace;
+  --lp-font-mono: "Obel Mono", monospace;
+  --lp-bg: #f8f0e3;
+  --lp-text: #3e2c23;
+  --lp-text-muted: #765d4d;
+  --lp-border: #dfcdb9;
+  --lp-accent: #8b4a2d;
+  --lp-code-bg: #efe1d0;
+  --lp-max-width: 780px;
+  --lp-font-base: 1rem;
+  --lp-font-3xl: clamp(1.9rem, 4.5vw, 2.8rem);
+  --lp-radius-sm: 4px;
+  --lp-radius-md: 8px;
+  --lp-radius-lg: 12px;
+  --lp-diagram-primary: #f0d5ba;
+  --lp-diagram-primary-border: #9b5a39;
+  --lp-diagram-secondary: #efe1d0;
+  --lp-diagram-tertiary: #f5e9db;
+  --lp-diagram-line: var(--lp-text-muted);
+  --lp-diagram-text: var(--lp-text);
+}
+[data-theme="dark"] {
+  --lp-bg: #241b16;
+  --lp-text: #f3e3ce;
+  --lp-text-muted: #c3aa94;
+  --lp-border: #4c3a2e;
+  --lp-accent: #e7a67d;
+  --lp-code-bg: #32251e;
+  --lp-diagram-primary: #473124;
+  --lp-diagram-primary-border: #e7a67d;
+  --lp-diagram-secondary: #38291f;
+  --lp-diagram-tertiary: #2d211b;
+}
+
+/* Keep the reading experience quiet and warm. */
+html { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+body {
+  background: var(--lp-bg);
+  color: var(--lp-text);
+  font-family: var(--lp-font-body);
+  line-height: 1.8;
+}
+h1, h2, h3, h4, h5, h6,
+.lp-nav, .lp-nav a, button, input, textarea, select,
+code, pre, kbd, samp {
+  font-family: "Obel Mono", monospace;
+}
+h1, h2, h3 { letter-spacing: -0.045em; font-weight: 650; }
+h1 { line-height: 1.2; }
+.lp-nav {
+  border-bottom: 1px solid var(--lp-border);
+  background: var(--lp-bg);
+}
+.lp-article p, .lp-article li { line-height: 1.85; }
+.lp-article h2 {
+  margin-top: 2.4em;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--lp-border);
+}
+.lp-article a, .lp-wikilink {
+  color: var(--lp-accent);
+  text-underline-offset: .2em;
+  text-decoration-thickness: 1px;
+}
+.lp-article blockquote {
+  border-left: 2px solid var(--lp-accent);
+  background: var(--lp-code-bg);
+  padding: .8rem 1.2rem;
+}
+::selection { background: #dca77e; color: #2e1d14; }
+:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 4px; }
