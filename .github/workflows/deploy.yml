@@ -30,7 +30,7 @@ jobs:
       - name: Install Leafpress
         run: go install github.com/shivamx96/leafpress/cli/cmd/leafpress@v1.1.2
 
-      - name: Prepare the licensed local fonts
+      - name: Prepare local fonts (when supplied)
         run: python3 scripts/fetch-fonts.py
 
       - name: Build and validate site
@@ -39,8 +39,6 @@ jobs:
           test -f _site/index.html
           test -f _site/blog/index.html
           test -f _site/portfolio/index.html
-          test -f _site/static/fonts/obel-mono/ObelMono-Roman.woff2
-          test -f _site/static/fonts/obel-mono/ObelMono-Italic.woff2
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'

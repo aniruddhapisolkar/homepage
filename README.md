@@ -81,6 +81,20 @@ leafpress serve
 
 Open http://localhost:3000. For a production build run `leafpress build --strict`.
 
-Obel Mono 1.004 (Roman and Italic) is fetched from Typographic Systems' versioned official archive at build time, along with its SIL Open Font License. The output serves those fonts locally; visitors don't need to contact a font service. `style.css` defines the warm light and dark color palettes, while `leafpress.json` assigns Obel Mono to headings, body, and code.
+## Typography
+
+The design is prepared for [Obel Mono](https://typographic.systems/obel-mono) 1.004. The publisher rejected the automated CI download, so until the font assets are supplied, the site uses the bundled JetBrains Mono fallback. 
+
+To activate Obel Mono, download the official archive and put the unmasked Roman and Italic **variable WOFF2** files and its `OFL.txt` at:
+
+- `static/fonts/obel-mono/ObelMono-Roman.woff2`
+- `static/fonts/obel-mono/ObelMono-Italic.woff2`
+- `static/fonts/obel-mono/OFL.txt`
+
+Then commit them. The build pipeline detects these files and registers Obel Mono as the heading, body, and code font; visitors receive them directly from the site. No external font service or font-download step is needed. The same preparation script works before local preview.
+
+## First-time publishing setup
+
+In GitHub, open **Settings → Pages → Build and deployment** and set Source to **GitHub Actions**. Then open **Actions**, select **Build and deploy Leafpress**, and click **Run workflow** if you need to deploy before the next push to main.
 
 Further reading: [Writing content](https://leafpress.in/guide/writing/) · [Configuration](https://leafpress.in/guide/configuration/) · [Theming](https://leafpress.in/guide/theming/) · [GitHub Pages deployment](https://leafpress.in/guide/deploy-github/).

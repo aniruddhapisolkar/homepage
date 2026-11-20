@@ -1,8 +1,8 @@
 /* Oat milk, espresso & cinnamon. Leafpress provides the responsive layout. */
 :root {
-  --lp-font-heading: "Obel Mono", monospace;
-  --lp-font-body: "Obel Mono", monospace;
-  --lp-font-mono: "Obel Mono", monospace;
+  --lp-font-heading: "Obel Mono", "JetBrains Mono", monospace;
+  --lp-font-body: "Obel Mono", "JetBrains Mono", monospace;
+  --lp-font-mono: "Obel Mono", "JetBrains Mono", monospace;
   --lp-bg: #f8f0e3;
   --lp-text: #3e2c23;
   --lp-text-muted: #765d4d;
@@ -47,7 +47,7 @@ body {
 h1, h2, h3, h4, h5, h6,
 .lp-nav, .lp-nav a, button, input, textarea, select,
 code, pre, kbd, samp {
-  font-family: "Obel Mono", monospace;
+  font-family: "Obel Mono", "JetBrains Mono", monospace;
 }
 h1, h2, h3 { letter-spacing: -0.045em; font-weight: 650; }
 h1 { line-height: 1.2; }
