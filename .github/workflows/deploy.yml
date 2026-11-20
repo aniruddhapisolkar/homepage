@@ -34,6 +34,9 @@ jobs:
         run: |
           leafpress build --strict
           python3 scripts/customize-nav.py
+          node --check static/graph-controls.js
+          test -f _site/static/graph-controls.js
+          grep -Fq 'src="/homepage/static/graph-controls.js"' _site/index.html
           test -f _site/index.html
           test -f _site/blog/index.html
           test -f _site/portfolio/index.html
