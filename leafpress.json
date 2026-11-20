@@ -4,7 +4,8 @@
     "author": "Ani",
     "baseURL": "https://aniruddhapisolkar.github.io/homepage",
     "description": "A personal archive of writing, work, and ideas.",
-    "footer": "An evolving collection of work and ideas."
+    "footer": "An evolving collection of work and ideas.",
+    "headExtra": "<script defer src=\"/homepage/static/graph-controls.js\"></script>"
   },
   "theme": {
     "preset": "quiet",
