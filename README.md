@@ -24,7 +24,6 @@ Click **Add file → Create new file**. Enter a path like `blog/my-first-post.md
 ```markdown
 ---
 title: "My First Post"
-date: 2026-11-19
 tags: [ai, mathematics]
 ---
 
@@ -44,13 +43,14 @@ Create a new file named `research/_index.md`:
 ```markdown
 ---
 title: "Research"
-sort: date
 ---
 
 My research and experiments.
 ```
 
 Then create pages inside `research/`, such as `research/first-experiment.md`. Leafpress makes the section page, lists its pages, and adds it to the navigation automatically. Repeat with any folder name.
+
+Creation dates are not displayed on the website. No date, sort, or table-of-contents metadata is needed.
 
 ## Links, images, and drafts
 

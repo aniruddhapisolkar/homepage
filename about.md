@@ -1,7 +1,6 @@
 ---
 title: "About"
 description: "About Ani."
-toc: false
 ---
 
 Hi, I'm Ani. 

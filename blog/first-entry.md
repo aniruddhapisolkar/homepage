@@ -1,6 +1,5 @@
 ---
 title: "A first entry"
-date: 2026-11-19
 description: "A placeholder for the first essay."
 tags: [writing]
 ---

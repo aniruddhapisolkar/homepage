@@ -2,7 +2,6 @@
 title: "Example project"
 description: "A placeholder project entry."
 tags: [projects]
-toc: false
 ---
 
 Replace this example with a project of your own.

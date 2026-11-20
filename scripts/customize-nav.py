@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace Leafpress's RSS navigation control with Ani's GitHub profile.
+"""Customize generated Leafpress pages: GitHub navigation and no date labels.
 
 The RSS feeds remain available. Keeping the original navigation class retains
 Leafpress's desktop and mobile styling.
@@ -15,21 +15,29 @@ MARKUP = '''<a href="https://github.com/aniruddhapisolkar" class="lp-rss-link lp
               <span class="lp-nav-tool-label">GitHub</span>
             </a>'''
 RSS_LINK = re.compile(r'<a\b(?=[^>]*\bclass="lp-rss-link")[^>]*>.*?</a>', re.DOTALL)
+DATE_METADATA = re.compile(
+    r'<span class="lp-date-info">.*?</span>|<time class="lp-index-date"[^>]*>.*?</time>',
+    re.DOTALL,
+)
 
 
 def customize():
     replaced = 0
+    dates_removed = 0
     for page in ROOT.rglob("*.html"):
         html = page.read_text(encoding="utf-8")
         updated, count = RSS_LINK.subn(lambda _: MARKUP, html)
-        if count:
-            page.write_text(updated, encoding="utf-8")
-            replaced += count
-        elif page == ROOT / "index.html":
+        if not count and page == ROOT / "index.html":
             raise RuntimeError("Expected Leafpress RSS navigation link not found on homepage.")
+        updated, date_count = DATE_METADATA.subn("", updated)
+        if updated != html:
+            page.write_text(updated, encoding="utf-8")
+        replaced += count
+        dates_removed += date_count
     if not replaced:
         raise RuntimeError("No navigation links were customized.")
     print(f"GitHub navigation link added to {replaced} pages.")
+    print(f"Removed {dates_removed} automatic date labels.")
 
 
 if __name__ == "__main__":
