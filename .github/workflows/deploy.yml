@@ -36,6 +36,8 @@ jobs:
           python3 scripts/customize-nav.py
           node --check static/graph-controls.js
           test -f _site/static/graph-controls.js
+          test -f _site/static/graph-controls.css
+          grep -Fq 'href="/homepage/static/graph-controls.css"' _site/index.html
           grep -Fq 'src="/homepage/static/graph-controls.js"' _site/index.html
           test -f _site/index.html
           test -f _site/blog/index.html
