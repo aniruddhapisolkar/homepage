@@ -39,7 +39,7 @@
   },
   "features": {
     "graph": true,
-    "toc": true,
+    "toc": false,
     "search": true,
     "wikilinks": true,
     "backlinks": true,
