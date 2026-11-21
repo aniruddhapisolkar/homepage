@@ -2,7 +2,7 @@
 title: "Engineering mathematical learning"
 ---
 
-*Fri • Nov 20 2026*
+Friday - Nov 20 2026
 
 One of my most ambitious projects has been to see if we can engineer mathematical learning so that if someone wants to learn math, they can learn it fast. 
 
