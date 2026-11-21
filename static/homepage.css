@@ -1,0 +1,121 @@
+/* Loaded only for the root index.md page. */
+body.lp-body {
+  --homepage-wallpaper: url("wallpaper.gif");
+  --lp-bg: #101c2d;
+  --lp-text: #fff2df;
+  --lp-text-muted: #d9cdbd;
+  --lp-accent: #ffd09b;
+  --lp-border: #ffffff36;
+  --lp-code-bg: #192a3e;
+  --lp-nav-surface: #101c2d;
+  --lp-font-base: 0.875rem;
+  --lp-font-sm: 0.75rem;
+  --lp-font-lg: 1rem;
+  --lp-font-xl: 1.1rem;
+  --lp-font-2xl: 1.3rem;
+  --lp-font-3xl: clamp(1.45rem, 2.5vw, 1.85rem);
+  background: var(--lp-bg);
+  color: var(--lp-text);
+  color-scheme: dark;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+
+body.lp-body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(to left, #07111ec9 0%, #07111e55 38%, transparent 66%), var(--homepage-wallpaper);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.lp-nav[data-nav-style="sticky"] {
+  background: #101c2dd9;
+  border-color: var(--lp-border);
+}
+
+.lp-nav .lp-nav-container {
+  width: min(100%, 36rem);
+  max-width: none;
+  margin-inline: auto 0;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+  align-items: flex-end;
+}
+
+.lp-nav .lp-nav-links {
+  justify-content: flex-end;
+}
+
+.lp-main {
+  flex: 1;
+  width: min(100%, 36rem);
+  max-width: none;
+  margin-inline: auto 0;
+  padding: clamp(2rem, 7vh, 4.5rem) clamp(1.25rem, 4vw, 4rem) 1rem;
+  text-align: right;
+  background: transparent;
+  text-shadow: 0 1px 4px #07111e;
+}
+
+.lp-main :is(.lp-article, .lp-section, .lp-page-container) {
+  width: 100%;
+  max-width: none;
+}
+
+.lp-main :is(.lp-meta, .lp-header-details) {
+  justify-content: flex-end;
+}
+
+.lp-main :is(p, li) {
+  line-height: 1.55;
+}
+
+.lp-main h2 {
+  margin-block: 1.25rem 0.6rem;
+  padding-bottom: 0.35rem;
+}
+
+.lp-main :is(ul, ol) {
+  padding-inline: 0;
+  list-style-position: inside;
+}
+
+.lp-main a {
+  color: var(--lp-accent);
+}
+
+.lp-footer {
+  width: min(100%, 36rem);
+  max-width: none;
+  margin-inline: auto 0;
+  padding: 0.75rem clamp(1.25rem, 4vw, 4rem) 1rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  text-shadow: 0 1px 4px #07111e;
+}
+
+@media (max-width: 768px) {
+  body.lp-body::before {
+    background-image: linear-gradient(to left, #07111ed9, #07111e88), var(--homepage-wallpaper);
+    background-position: 60% center;
+  }
+
+  .lp-main {
+    padding-top: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.lp-body {
+    --homepage-wallpaper: url("wallpaper.png");
+  }
+}

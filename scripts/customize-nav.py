@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Customize generated Leafpress pages: GitHub navigation and no date labels.
+"""Customize generated Leafpress pages and load the root homepage style.
 
 The RSS feeds remain available. Keeping the original navigation class retains
 Leafpress's desktop and mobile styling.
@@ -19,6 +19,7 @@ DATE_METADATA = re.compile(
     r'<span class="lp-date-info">.*?</span>|<time class="lp-index-date"[^>]*>.*?</time>',
     re.DOTALL,
 )
+HOME_STYLESHEET = '<link rel="stylesheet" href="static/homepage.css">'
 
 
 def customize():
@@ -30,6 +31,13 @@ def customize():
         if not count and page == ROOT / "index.html":
             raise RuntimeError("Expected Leafpress RSS navigation link not found on homepage.")
         updated, date_count = DATE_METADATA.subn("", updated)
+        if page == ROOT / "index.html":
+            if "</head>" not in updated:
+                raise RuntimeError("Expected a head element in the homepage.")
+            for asset in ("homepage.css", "wallpaper.gif", "wallpaper.png"):
+                if not (ROOT / "static" / asset).is_file():
+                    raise RuntimeError(f"Missing homepage asset: {asset}")
+            updated = updated.replace("</head>", f"  {HOME_STYLESHEET}\n</head>", 1)
         if updated != html:
             page.write_text(updated, encoding="utf-8")
         replaced += count
