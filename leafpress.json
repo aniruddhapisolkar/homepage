@@ -5,7 +5,7 @@
     "baseURL": "https://aniruddhapisolkar.github.io/homepage",
     "description": "A personal archive of writing, work, and ideas.",
     "footer": "An evolving collection of work and ideas.",
-    "headExtra": "<link rel=\"stylesheet\" href=\"/homepage/static/graph-controls.css\"><script defer src=\"/homepage/static/graph-controls.js\"></script>"
+    "headExtra": "<link rel=\"stylesheet\" href=\"/homepage/static/graph-controls.css\"><script defer src=\"/homepage/static/graph-controls.js\"></script><link rel=\"stylesheet\" href=\"/homepage/static/graph-visibility.css\">"
   },
   "theme": {
     "preset": "quiet",

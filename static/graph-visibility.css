@@ -1,0 +1,22 @@
+/* Keep every note identifiable, including notes with no links. */
+.lp-graph-panel .lp-graph-node {
+  fill: var(--lp-accent);
+  fill-opacity: 1;
+  stroke: var(--lp-bg);
+}
+
+.lp-graph-panel .lp-graph-node--current {
+  stroke: var(--lp-text);
+  stroke-width: 3px;
+}
+
+.lp-graph-panel .lp-graph-label {
+  /* Leafpress sets label opacity inline on hover and selection. */
+  opacity: 1 !important;
+  fill: var(--lp-text) !important;
+  paint-order: stroke fill;
+  stroke: var(--lp-bg);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
