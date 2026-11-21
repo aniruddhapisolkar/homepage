@@ -6,7 +6,6 @@ Leafpress's desktop and mobile styling.
 
 GitHub mark: Primer Octicons (MIT), see static/licenses/octicons-LICENSE.txt.
 """
-import json
 import re
 from pathlib import Path
 
@@ -25,15 +24,6 @@ HOME_STYLESHEET = '<link rel="stylesheet" href="static/homepage.css">'
 
 
 def customize():
-    # Leafpress emits null for a graph with no links, but its client iterates
-    # both arrays. Unlinked pages must still render as independent nodes.
-    graph_path = ROOT / "graph.json"
-    if graph_path.is_file():
-        graph = json.loads(graph_path.read_text(encoding="utf-8"))
-        for key in ("nodes", "edges"):
-            if graph.get(key) is None:
-                graph[key] = []
-        graph_path.write_text(json.dumps(graph, indent=2) + "\n", encoding="utf-8")
     replaced = 0
     dates_removed = 0
     for page in ROOT.rglob("*.html"):

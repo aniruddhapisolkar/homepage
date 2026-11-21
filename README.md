@@ -47,7 +47,9 @@ title: "Research"
 My research and experiments.
 ```
 
-Then create pages inside `research/`, such as `research/first-experiment.md`. Leafpress makes the section page, lists its pages, and adds it to the navigation automatically. Repeat with any folder name.
+Then create pages inside `research/`, such as `research/first-experiment.md`. Leafpress makes the section page and lists its pages. To add a new top-level navigation link, add an entry to `navigation.items` in `leafpress.json`.
+
+For a Portfolio project, create `portfolio/my-project/_index.md` with its title and `showList: false` if you want to write your own contents list. Add a bullet linking to `/homepage/portfolio/my-project/` in `portfolio/_index.md`. Projects stay under Portfolio instead of appearing in the navbar.
 
 Creation dates are not displayed on the website. No date, sort, or table-of-contents metadata is needed.
 

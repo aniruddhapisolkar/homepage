@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Render the portfolio guide's Markdown with native MathML inside Leafpress.
 
-Only the guide's article bodies are replaced. The website's existing layout,
-navigation, fonts, theme, metadata, and other pages remain untouched.
+Replace the guide's article bodies and format the curated Portfolio list
+using Leafpress's native index styles.
 """
 from html.parser import HTMLParser
 from pathlib import Path
@@ -46,53 +46,41 @@ class Links(HTMLParser):
             self.links.append(attrs["href"])
 
 
-def keep_guide_in_portfolio():
-    # Leafpress treats nested sections as top-level navigation entries and
-    # produces an un-ordered list of their pages. Keep the guide's hand-written
-    # reading order and show it as one normal project in the Portfolio index.
+def render_portfolio_index():
+    # Leafpress's automatic section list excludes nested sections. Move every
+    # curated project link into the native list so all projects look the same.
     section_index = re.compile(r'<ul class="lp-index\b[^"]*">.*?</ul>', re.DOTALL)
     section_count = re.compile(r'<p class="lp-section-count">.*?</p>', re.DOTALL)
     section_link = re.compile(
-        r'<li><a href="' + re.escape(PREFIX) + r'">([^<]+)</a>[^<]*</li>'
+        r'<li>\s*<a href="(' + re.escape(BASE + "/portfolio/")
+        + r'[^/"<>]+/)">([^<]+)</a>[^<]*</li>'
     )
     portfolio = SITE / "portfolio" / "index.html"
     html = portfolio.read_text(encoding="utf-8")
-    match = section_link.search(html)
-    if not match:
-        raise ValueError("Missing guide project in the portfolio introduction")
-    label = match.group(1)
-    html = html[:match.start()] + html[match.end():]
+    projects = section_link.findall(html)
+    if not projects or len({href for href, _ in projects}) != len(projects):
+        raise ValueError("Missing or duplicate projects in the portfolio introduction")
+    for href, _ in projects:
+        if not (SITE / href.removeprefix(BASE + "/") / "index.html").is_file():
+            raise ValueError(f"Missing portfolio project page: {href}")
+    html = section_link.sub("", html)
     html = re.sub(r"<ul>\s*</ul>", "", html)
     index = section_index.search(html)
     if not index:
         raise ValueError("Missing Leafpress portfolio list")
-    entry = (f'\n    <li class="lp-index-item"><a class="lp-index-link" href="{PREFIX}">'
-             f'<span class="lp-index-title">{label}</span></a></li>')
+    entries = "".join(
+        f'\n    <li class="lp-index-item"><a class="lp-index-link" href="{href}">'
+        f'<span class="lp-index-title">{label}</span></a></li>'
+        for href, label in projects
+    )
     start = html.index(">", index.start()) + 1
-    html = html[:start] + entry + html[start:]
+    html = html[:start] + entries + html[start:]
     count = len(re.findall(r'<li class="lp-index-item">', section_index.search(html).group()))
     html = section_count.sub(
         f'<p class="lp-section-count">{count} {"item" if count == 1 else "items"} in Portfolio</p>',
         html, count=1,
     )
     portfolio.write_text(html, encoding="utf-8")
-
-    guide = SITE / "portfolio" / "tsmt" / "index.html"
-    html = guide.read_text(encoding="utf-8")
-    html = section_index.sub("", html, count=1)
-    html = section_count.sub("", html, count=1)
-    guide.write_text(html, encoding="utf-8")
-
-    nav_link = re.compile(
-        r'<a\b(?=[^>]*\bclass="lp-nav-link(?:\s|"))'
-        r'(?=[^>]*\bhref="' + re.escape(PREFIX) + r'")[^>]*>.*?</a>',
-        re.DOTALL,
-    )
-    for page in SITE.rglob("*.html"):
-        html = page.read_text(encoding="utf-8")
-        updated = nav_link.sub("", html)
-        if updated != html:
-            page.write_text(updated, encoding="utf-8")
 
 
 def render():
@@ -127,7 +115,7 @@ def render():
         parsed.feed(html)
         pages[BASE + "/" + relative] = parsed
 
-    keep_guide_in_portfolio()
+    render_portfolio_index()
 
     if not rendered_math:
         raise ValueError("No guide equations were rendered")

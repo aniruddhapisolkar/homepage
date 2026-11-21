@@ -1,6 +1,7 @@
 ---
 title: "The Structure of Mathematical Thought"
 description: "A beginner-friendly guide to proofs, problem solving, applied reasoning, and independent mathematical research."
+showList: false
 ---
 
 A field guide to reasoning.
