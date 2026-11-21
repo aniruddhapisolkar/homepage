@@ -4,8 +4,7 @@
     "author": "Ani",
     "baseURL": "https://aniruddhapisolkar.github.io/homepage",
     "description": "A personal archive of writing, work, and ideas.",
-    "footer": "An evolving collection of work and ideas.",
-    "headExtra": "<link rel=\"stylesheet\" href=\"/homepage/static/graph-controls.css\"><script defer src=\"/homepage/static/graph-controls.js\"></script><link rel=\"stylesheet\" href=\"/homepage/static/graph-visibility.css\">"
+    "footer": "An evolving collection of work and ideas."
   },
   "theme": {
     "preset": "quiet",
@@ -38,7 +37,7 @@
     ]
   },
   "features": {
-    "graph": true,
+    "graph": false,
     "toc": false,
     "search": true,
     "wikilinks": true,
@@ -47,8 +46,12 @@
     "sharing": false
   },
   "navigation": {
-    "mode": "automatic",
-    "includeTags": false
+    "mode": "explicit",
+    "items": [
+      { "label": "About", "path": "/about/" },
+      { "label": "Blog", "path": "/blog/" },
+      { "label": "Portfolio", "path": "/portfolio/" }
+    ]
   },
   "build": {
     "outputDir": "_site",
