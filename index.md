@@ -11,7 +11,5 @@ This is my little corner of the internet; a space for the things I'm learning, t
 - **[Portfolio](portfolio/)** — projects, work in progress, and things I've made.
 - **[About](about/)** — a little more about the person behind this site.
 
----
-
 [Contact me](mailto:aniruddha.pisolkar@gmail.com)
 
