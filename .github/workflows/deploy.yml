@@ -30,9 +30,17 @@ jobs:
       - name: Install Leafpress
         run: go install github.com/shivamx96/leafpress/cli/cmd/leafpress@v1.1.2
 
+      - name: Install Pandoc for guide equations
+        run: |
+          if ! command -v pandoc >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y pandoc
+          fi
+
       - name: Build and validate site
         run: |
           leafpress build --strict
+          python3 scripts/render-tsmt.py
           python3 scripts/customize-nav.py
           node --check static/graph-controls.js
           test -f _site/static/graph-controls.js
