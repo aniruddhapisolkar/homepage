@@ -6,6 +6,7 @@ Leafpress's desktop and mobile styling.
 
 GitHub mark: Primer Octicons (MIT), see static/licenses/octicons-LICENSE.txt.
 """
+import json
 import re
 from pathlib import Path
 
@@ -15,6 +16,7 @@ MARKUP = '''<a href="https://github.com/aniruddhapisolkar" class="lp-rss-link lp
               <span class="lp-nav-tool-label">GitHub</span>
             </a>'''
 RSS_LINK = re.compile(r'<a\b(?=[^>]*\bclass="lp-rss-link")[^>]*>.*?</a>', re.DOTALL)
+THEME_TOGGLE = re.compile(r'<button\b(?=[^>]*\bclass="lp-theme-toggle")[^>]*>.*?</button>', re.DOTALL)
 DATE_METADATA = re.compile(
     r'<span class="lp-date-info">.*?</span>|<time class="lp-index-date"[^>]*>.*?</time>',
     re.DOTALL,
@@ -23,6 +25,15 @@ HOME_STYLESHEET = '<link rel="stylesheet" href="static/homepage.css">'
 
 
 def customize():
+    # Leafpress emits null for a graph with no links, but its client iterates
+    # both arrays. Unlinked pages must still render as independent nodes.
+    graph_path = ROOT / "graph.json"
+    if graph_path.is_file():
+        graph = json.loads(graph_path.read_text(encoding="utf-8"))
+        for key in ("nodes", "edges"):
+            if graph.get(key) is None:
+                graph[key] = []
+        graph_path.write_text(json.dumps(graph, indent=2) + "\n", encoding="utf-8")
     replaced = 0
     dates_removed = 0
     for page in ROOT.rglob("*.html"):
@@ -31,6 +42,7 @@ def customize():
         if not count and page == ROOT / "index.html":
             raise RuntimeError("Expected Leafpress RSS navigation link not found on homepage.")
         updated, date_count = DATE_METADATA.subn("", updated)
+        updated = THEME_TOGGLE.sub("", updated)
         if page == ROOT / "index.html":
             updated = re.sub(r'<span class="lp-reading-time">.*?</span>', "", updated, flags=re.DOTALL)
             if "</head>" not in updated:
@@ -51,3 +63,4 @@ def customize():
 
 if __name__ == "__main__":
     customize()
+
