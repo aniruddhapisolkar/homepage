@@ -6,7 +6,7 @@ title: "Engineering mathematical learning"
 
 One of my most ambitious projects has been to see if we can engineer mathematical learning so that if someone wants to learn math, they can learn it fast. 
 
-I have a simple guide on this website called "The Structure of Mathematical Thought" that is intended to do just this by teaching the reader the fundamental principles of how to **think** about a mathematical problem, rather than just forcing them to memorize equations.
+I have a simple guide on this website called [The Structure of Mathematical Thought](https://aniruddhapisolkar.github.io/homepage/portfolio/tsmt/) that is intended to do just this by teaching the reader the fundamental principles of how to **think** about a mathematical problem, rather than just forcing them to memorize equations.
 
 ***
 
