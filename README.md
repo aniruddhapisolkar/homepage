@@ -24,7 +24,6 @@ Click **Add file → Create new file**. Enter a path like `blog/my-first-post.md
 ```markdown
 ---
 title: "My First Post"
-tags: [ai, mathematics]
 ---
 
 Your content here.
