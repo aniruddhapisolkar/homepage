@@ -32,6 +32,7 @@ def customize():
             raise RuntimeError("Expected Leafpress RSS navigation link not found on homepage.")
         updated, date_count = DATE_METADATA.subn("", updated)
         if page == ROOT / "index.html":
+            updated = re.sub(r'<span class="lp-reading-time">.*?</span>', "", updated, flags=re.DOTALL)
             if "</head>" not in updated:
                 raise RuntimeError("Expected a head element in the homepage.")
             for asset in ("homepage.css", "wallpaper.gif", "wallpaper.png"):
