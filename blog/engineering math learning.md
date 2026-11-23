@@ -24,4 +24,4 @@ The point is, I feel like mathematical acceleration demands some degree of *extr
 
 ***
 
-So all in all, the prerequisite to engineering mathematical mastery is craziness. Be crazy, and shoot for the moon.
+So all in all, I believe that the prerequisite to engineering mathematical mastery is craziness. Be crazy, and shoot for the moon.
