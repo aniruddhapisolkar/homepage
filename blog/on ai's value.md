@@ -1,3 +1,7 @@
+---
+title: "On AI's Value"
+---
+
 Wednesday - Nov 25 2026
 
 AI is really good at a lot of things. Like, *really good*. But its distribution of its abilities is really jagged; it's superhuman at some things, subpar at others. I think AI should really only be used for STEM tasks: that is, Science, Technology, Engineering, and Mathematics. Now, that use also means that it should only be *developed* for such tasks. AI models excel at STEM tasks, so why shouldn't we go all into that field? It only makes sense.
