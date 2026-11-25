@@ -1,3 +1,7 @@
+---
+title: "Compact Intelligence"
+---
+
 Monday - Nov 23 2026
 
 # I
